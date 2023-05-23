@@ -1,0 +1,34 @@
+<div style="width: 80%; background-color:aliceblue; margin-bottom: 20px">
+  <canvas id="canvas4" style="width: 100%;">
+
+  </canvas>
+</div>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script>
+  const exercise = document.getElementById('canvas4').getContext('2d');
+  const exerciseChart = new Chart(exercise, {
+    // display type is line
+    type: 'line',
+    data: {
+      // label
+      labels: {{{dates}}},
+      datasets: [{
+        label: 'exercise (step count)',
+        // data 
+        data: {{{datas}}}.exercise,
+        borderWidth: 1,
+        backgroundColor: "transparent",
+        borderColor: "blue",
+      }]
+    },
+    options: {
+      elements: {
+        line: {
+          tension: 0.2
+        }
+      },
+    }
+  });
+</script>

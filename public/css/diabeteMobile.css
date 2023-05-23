@@ -1,0 +1,19 @@
+.main {
+    position: relative;
+    width: 100%;
+    float: none;
+    padding: 15px;
+}
+
+.menu {
+    position: relative;
+    width: 80%;
+    float: none;
+    padding: 15px;
+}
+
+#more-information {
+    padding: 15px;
+    padding-bottom: 120px;
+    padding-left: 40px;
+}

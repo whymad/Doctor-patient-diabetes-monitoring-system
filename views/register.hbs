@@ -1,0 +1,77 @@
+<div class="note">
+<div class="left">
+
+<h1> Create a New Patient </h1>
+{{#if message}}<p> {{message}} </p > {{/if}}
+<form id="register" action="/clinician/register" method="POST">
+    <div> 
+        <label> Enter email: </label>
+        <input type="email" name="email" placeholder="Email" value="{{input.email}}" required>
+    </div> 
+    <br/>
+    <div> 
+        <label> Enter password: </label>
+        <input type="password" name="password" placeholder="Password" value="{{input.password}}" required>
+    </div> <br/>
+    <div> 
+        <label> Enter First Name: </label>
+        <input type="text" name="firstName" placeholder="First Name" value="{{input.firstName}}" required>
+    </div> <br/>
+    <div> 
+        <label> Enter Last Name: </label>
+        <input type="text" name="lastName" placeholder="Last Name" value="{{input.lastName}}" required>
+    </div> <br/>
+    <div> 
+        <label> Enter Screen Name: </label>
+        <input type="text" name="screenName" placeholder="Screen Name" value="{{input.screenName}}" required>
+    </div> <br/>
+    <div> 
+        <label> Enter Year of Birth: </label>
+        <input type="number" min="1900" max="2022" name="YearOfBirth" value="{{input.yearOfBirth}}" required>
+    </div> <br/>
+    <div> 
+        <label> Enter Brief Text Bio: </label>
+        <input type="text" name="textBio" placeholder="Breif Bio" value="{{input.textBio}}" >
+    </div> <br/>
+    <div> 
+        <label> Enter Support Message: </label>
+        <input type="text" name="supportMessage" placeholder="Support Message" value="{{input.supportMessage}}" >
+    </div> <br/>
+    <div>
+        {{!-- custom radio button --}}
+        <label> Need to record blood glucose level: </label>
+        <input type="radio" id="bgl_yes" name="bgl" value="true" required="required">
+        <label for="bgl_yes"> Yes </label>
+        <input type="radio" id="bgl_no" name="bgl" value="false" >
+        <label for="bgl_no"> No </label>
+    </div> <br/>
+    <div>
+        <label> Need to record weight: </label>
+        <input type="radio" id="weight_yes" name="weight" value="true" required="required">
+        <label for="weight_yes"> Yes </label>
+        <input type="radio" id="weight_no" name="weight" value="false" >
+        <label for="weight_no"> No </label>
+    </div> <br/>
+    <div>
+        <label> Need to record doses of insulin taken: </label>
+        <input type="radio" id="doit_yes" name="doit" value="true" required="required">
+        <label for="doit_yes"> Yes </label>
+        <input type="radio" id="doit_no" name="doit" value="false" >
+        <label for="doit_no"> No </label>
+    </div> <br/>
+    <div>
+        <label> Need to record exercise: </label>
+        <input type="radio" id="exercise_yes" name="exercise" value="true" required="required">
+        <label for="exercise_yes"> Yes </label>
+        <input type="radio" id="exercise_no" name="exercise" value="false" >
+        <label for="exercise_no"> No </label>
+    </div> <br/>
+    <p>Note: default safety thresholds given, you can change their safety thresholds later</p>
+    <button class="log_in_button log_in_button1" type="submit"> Register </button>
+</form>
+<a href="/clinician/dashboard"> 
+    <button class="log_in_button log_in_button1"> Back </button>
+</a>
+
+</div>
+</div>

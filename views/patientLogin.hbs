@@ -1,0 +1,24 @@
+<div class="note">
+<div class="log_in">
+<div class="log_in_fill">
+  
+<h1>Patient Login</h1>
+{{#if loginMessage}} <p>{{loginMessage}}</p > {{/if}}
+<form class="loginForm" action="/patient/login" method="POST">
+  <label for="username">Email:</label>
+  <input class="input_login" type="text" name="email" placeholder="Enter your email" required/> 
+  <br/> 
+  <br/> 
+  <label for="password">Password:</label>
+
+  <input class="input_login" type="password" name="password" placeholder="Enter your password" required/>
+  <br/>
+  <br/> 
+  <input class="log_in_button log_in_button1" type="submit" value="Log In" />
+</form>
+
+</div>
+</div>
+</div>
+
+

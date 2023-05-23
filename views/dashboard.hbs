@@ -1,0 +1,60 @@
+<div class="dashboard_header">
+  <h1> Dashboard </h1> 
+
+  <h2>Patients' Data today:</h2>
+  <p>Click on patient's name to view their profile for more managements</p>
+  </div>
+  <div class="dashboard_table">
+  <div class="dashboard_table_form">
+  <table border="1">
+
+    <tr>
+      <th> Patient Name </th>
+      <th> Bgl </th>
+      <th> Weight </th>
+      <th> Doit </th>
+      <th> Exercise </th>
+    </tr>
+
+  {{#each patientlist}}
+    <tr onClick="location.href='/clinician/dashboard{{this._id}}'">
+      <td> {{this.screenName}} </td>
+      {{#each this.today}}
+        {{#ifUnrecorded this.status}}
+        <td style="color: red"> missing </td>
+        {{else}}
+          {{#ifNoNeed this.status}}
+          <td> no need </td>
+          {{else}}
+          <td style = "color: 
+          {{#ifLower this.value this.min}}
+          orange
+          {{else}}
+          {{#ifHigher this.value this.max}}
+          red
+          {{else}}
+          black
+          {{/ifHigher}}
+          {{/ifLower}}
+          ;"> {{this.value}} </td>
+          {{/ifNoNeed}}
+        {{/ifUnrecorded}}
+      {{/each}}
+    </tr>
+    </a>
+  {{/each}}
+  </table>
+
+  <p><span style="color: orange">Orange</span> data indicates lower than its safety limit</p>
+  <p><span style="color: red">Red</span> data indicates higher than its safety limit</p>
+
+  <a href="/clinician/getComments">
+    <button class="dashboard_button"> View Comments </button>
+  </a>
+  <a href="/clinician/register">
+    <button class="dashboard_button"> Register New Patients </button>
+  </a>
+  <form id="logout" action="/clinician/logout" method="POST"></form>
+  <button class="dashboard_button" form="logout">Log out</button>
+  </div>
+</div>

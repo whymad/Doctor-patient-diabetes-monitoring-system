@@ -1,0 +1,101 @@
+<div class="note">
+
+<div>
+  <h1>
+    HI, {{patient.screenName}}
+  </h1>
+
+  <h2>
+    Record Your Data for {{record.recordDate}}
+  </h2>
+  <table id = "patient_table" border="1">
+
+    <tr>
+      <th> Data Name </th>
+      <th> Value </th>
+      <th> Recorded Time </th>
+      <th> Status </th>
+      <th> Comments </th>
+      <th> Submit </th>
+    </tr>
+
+    {{#each record.data}}  
+    <form action="/patient/recordData" method="POST">
+      <tr>
+        <input type="hidden" name="key" value="{{@key}}">
+        <td> {{this.fullName}} </td>
+        {{#ifUnrecorded this.status}}
+        <td> <input class = "input_login" type="number" min="0" max="59999" name="value" placeholder="Enter here" required> </td>
+        {{else}}
+        <td> {{this.value}} </td>
+        {{/ifUnrecorded}}
+        <td> {{this.createdAt}} </td>
+        <td style="background-color:
+          {{#ifRecorded this.status}}
+          green
+          {{else}}
+          {{#ifUnrecorded this.status}}
+          red
+          {{else}}
+          grey
+          {{/ifUnrecorded}}
+          {{/ifRecorded}}
+          ;">
+          {{this.status}}
+        </td>
+        {{#ifUnrecorded this.status}}
+
+        <td> <input class = "input_login" type="text" name="comment" placeholder="Enter here" required> </td>
+
+        {{else}}
+        <td> {{this.comment}} </td>
+        {{/ifUnrecorded}}
+        {{#ifUnrecorded this.status}}
+        <td> <button class="log_in_button log_in_button1" class = "recorddatasubmit" type="submit"> submit </td>
+        {{else}}
+        <td class style = "text-align: center;"> submitted </td>
+        {{/ifUnrecorded}}
+      </tr>
+    </form>
+    {{/each}}
+  </table>
+</div>
+
+<div>
+
+  <p> Message from clinician: {{record.patientId.supportMessage}}</p>
+  {{#checkBadge patient.eRate}}
+  <img class = "img"src="https://media.istockphoto.com/vectors/vector-flat-golden-trophy-vector-id1176397624?k=20&m=1176397624&s=612x612&w=0&h=yICH7de39SwB1sDP4-kBHFS8bJz4srdu_HOrBC9KvzY=" alt="trophy">
+  <p> congratulation, you scored a engagement rate over 80% </p>
+
+  {{else}}
+  <p> NO badge for engagement rate, get a engagement rate over 80% to achieve a badge</p>
+  {{/checkBadge}}
+
+</div>
+
+<div>
+  <a href="/patient/updatePwd"><button class="log_in_button log_in_button1"> Change Password </button> </a>
+  <a href="/patient/viewData"><button class="log_in_button log_in_button1"> View History data </button> </a>
+  <a href="/patient/leaderboard"><button class="log_in_button log_in_button1"> View Leaderboard </button> </a>
+  <form id="logout" action="/patient/logout" method="POST"></form>
+  <button class="log_in_button log_in_button1" form="logout">Logout</button>
+</div>
+
+
+{{#if submitted}}
+<script>
+  window.onload=function() {
+    setTimeout(() => {
+      alert("submitted successfully");
+      window.location.href = window.location.origin + window.location.pathname
+    }, 500) 
+  }
+</script>
+{{/if}}
+
+<script>
+  
+</script>
+
+</div>

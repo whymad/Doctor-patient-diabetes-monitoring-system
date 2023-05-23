@@ -1,0 +1,14 @@
+.main {
+    position: relative;
+    width: 100%;
+    float: none;
+    padding: 15px;
+}
+
+.builders {
+    position: relative;
+    width: 100%;
+    float: none;
+    padding: 15px;
+    padding-bottom: 120px;
+}

@@ -1,0 +1,28 @@
+<div class="note">
+<div class="left">
+
+<div>
+  Add a new notes
+  <form id="noteForm" action="/clinician/addNote" method="POST">
+    <input type="hidden" name="patientId" value="{{patient._id}}">
+    <textarea name="note" row="10" column="30" form="noteForm"></textarea>
+    <button class="log_in_button log_in_button1" type="submit"> Add a new note </button>
+  </form>
+</div>
+
+<div>
+  Existing notes
+  {{#each notes}}
+    <div style="width: 80%; background-color: coral; margin-bottom: 20px;">
+      Time: {{this.createTime}} <br>
+      Notes: {{this.text}}
+    </div>
+  {{/each}}
+</div>
+
+<a href="/clinician/dashboard{{patient._id}}">
+  <button class="log_in_button log_in_button1"> Back </button>
+</a>
+
+</div>
+</div>

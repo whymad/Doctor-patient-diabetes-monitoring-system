@@ -1,0 +1,31 @@
+<div class="note">
+<div class = "log_in">
+<div class = "log_in_fill">
+  
+<h1> Change Password here</h1>
+{{#if message}} <p> {{message}} </p> {{/if}}
+<form id="pwdForm" action="/patient/updatePwd" method="POST">
+  <div>
+    <label> Old Password: </label>
+    <input class = "input_login" type="password" name="oldPwd" placeholder="Enter current password" required>
+  </div> <br />
+  <div>
+    <label> New Password: </label>
+    <input class = "input_login" type="password" name="newPwd" placeholder="Enter new password" required>
+  </div> <br />
+  <div>
+    <label> Confirm new Password: </label>
+    <input class = "input_login" type="password" name="confirm" placeholder="Confirm new password" required>
+  </div>
+</form> <br />
+
+<div>
+  <button class="log_in_button log_in_button1" type="submit" form="pwdForm"> Change </button> <br />
+  <a href="/patient/home">
+    <button class="log_in_button log_in_button1"> Back </button>
+  </a>
+</div>
+
+</div>
+</div>
+</div>

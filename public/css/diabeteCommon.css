@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+}
+
+/* central area to control type and colour */
+:root {
+    --font-body: 'PT Sans', sans-serif;
+    --font-heading: 'Ubuntu', sans-serif;
+    --color-dark: #2f6cc7;
+    --color-light: #cde4f3;
+    --color-white: #ffffff;
+    --color-grey: #EEEEEE;
+    --color-black: #000000;
+    --color-background: rgb(138, 196, 223);
+    --color-text-background: rgba(255,255,255,0.3);
+}
+
+/* Font size of heading */
+h1 {
+    font-size: 40px;
+    font-family: var(--font-heading);
+}
+
+h2 {
+    font-size: 30px;
+    font-family: var(--font-body);
+}
+
+h3 {
+    font-size: 25px;
+    font-family: var(--font-body);
+}
+
+h4 {
+    font-size: 20px;
+    font-family: var(--font-body);
+}
+
+p {
+    font-size: 18px;
+    font-family: var(--font-body);
+}
+
+ul.a {
+    list-style-position: outside;
+}
+
+ul.b {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* headers and footers*/
+header{
+    top: 0;
+    color: var(--color-white);
+    background-color: var(--color-dark);
+    display: flex;
+    align-items:center;
+    height: 6%;
+    width: 100%;
+}
+
+.page {
+    padding-bottom: 3rem;
+}
+
+footer {
+    position:absolute;
+    bottom: 0;
+    color: var(--color-white);
+    background-color: var(--color-dark);
+    display:block;
+    align-items:center;
+    height: 3rem;
+    width: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--color-background);
+}
+
+
+
+.background {
+    width: 100%;
+    height: 100%;
+    background-image: url(../image/diabetes.jpg);
+    /*background-image: url(https://img.js.design/assets/img/623967e1cf60a663a5deddb1.png);*/
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.background-occupy {
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--color-text-background);
+}
+
+#site-name {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 180%;
+    color: var(--color-white);
+}
+
+#home-button {
+    position: relative;
+    left: 2%;
+    font-size: 200%;
+    color: var(--color-white);
+}
+
+#user-button {
+    position: relative;
+    right: 2%;
+    font-size: 200%;
+    color: var(--color-white);
+}
+
+/*footer features*/
+#copyright {
+    margin: 5px;
+    font-size: 60%;
+}
+
+#helps {
+    margin: 5px;
+    font-size: 60%;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    /* border: 1px solid red;*/
+    padding: 40px;
+    text-align: center;
+}
+
+.main {
+    width: 75%;
+    float: left;
+    position: relative;
+    padding: 15px;
+    padding-left: 80px;
+    padding-bottom: 120px;
+    /* border: 1px solid red;*/
+}
+
+.menu {
+    width: 25%;
+    float: right;
+    position: relative;
+    padding: 15px;
+    padding-right: 80px;
+}  
+
+.menu-occupy {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--color-text-background);
+    border: 2px solid rgba(105, 102, 102, 0.3);
+}
+
+#youtube-video {
+    width: 70%;
+    height: 300px;
+}
+

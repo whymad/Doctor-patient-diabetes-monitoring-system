@@ -1,0 +1,34 @@
+<div style="width: 80%; background-color:aliceblue; margin-bottom: 20px">
+  <canvas id="canvas3" style="width: 100%;">
+
+  </canvas>
+</div>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script>
+  const doit = document.getElementById('canvas3').getContext('2d');
+  const doitChart = new Chart(doit, {
+    // display type is line
+    type: 'line',
+    data: {
+      // label
+      labels: {{{dates}}},
+      datasets: [{
+        label: 'doses of insulin taken (number of doses)',
+        // data 
+        data: {{{datas}}}.doit,
+        borderWidth: 1,
+        backgroundColor: "transparent",
+        borderColor: "orange",
+      }]
+    },
+    options: {
+      elements: {
+        line: {
+          tension: 0.2
+        }
+      },
+    }
+  });
+</script>

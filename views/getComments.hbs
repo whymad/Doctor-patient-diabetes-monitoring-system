@@ -1,0 +1,13 @@
+<div class = "comment_layout">
+  <h1> Comments </h1>
+  {{#each cl}}
+
+  <div onClick="location.href='/clinician/dashboard{{this.patientId}}'" style="background-color: rgb(157, 197, 211, 0.5);">
+    <p> {{this.comment}} </p>
+  </div>
+  {{/each}}
+</div>
+
+<a href="/clinician/dashboard">
+  <button class="log_in_button log_in_button1"> Back </button>
+</a>

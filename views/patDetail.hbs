@@ -1,0 +1,130 @@
+<div class="note">
+<div class="left">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+<div>
+  <h1>
+    Patient {{patient.screenName}}'s profile
+  </h1>
+</div>
+
+<div>
+  <h3>Patient {{patient.screenName}}'s historical health data:</h3>
+
+  <table id = "patient_table" border="1">
+    <tr>
+      <th> Recorded date </th>
+      <th> bgl </th>
+      <th> weight </th>
+      <th> doit </th>
+      <th> exercise </th>
+    </tr>
+    {{#each record}}  
+      <tr>
+        <td> {{this.time}} </td>
+        {{#ifUnrecorded this.bgl.status}}
+        <td style="color: red"> missing </td>
+        {{else}}
+          {{#ifNoNeed this.bgl.status}}
+          <td> no need </td>
+          {{else}}
+          <td> {{this.bgl.value}} </td>
+          {{/ifNoNeed}}
+        {{/ifUnrecorded}}
+        {{#ifUnrecorded this.weight.status}}
+        <td style="color: red"> missing </td>
+        {{else}}
+          {{#ifNoNeed this.weight.status}}
+          <td> no need </td>
+          {{else}}
+          <td> {{this.weight.value}} </td>
+          {{/ifNoNeed}}
+        {{/ifUnrecorded}}
+        {{#ifUnrecorded this.doit.status}}
+        <td style="color: red"> missing </td>
+        {{else}}
+          {{#ifNoNeed this.doit.status}}
+          <td> no need </td>
+          {{else}}
+          <td> {{this.doit.value}} </td>
+          {{/ifNoNeed}}
+        {{/ifUnrecorded}}
+        {{#ifUnrecorded this.exercise.status}}
+        <td style="color: red"> missing </td>
+        {{else}}
+          {{#ifNoNeed this.exercise.status}}
+          <td> no need </td>
+          {{else}}
+          <td> {{this.exercise.value}} </td>
+          {{/ifNoNeed}}
+        {{/ifUnrecorded}}
+      </tr>
+    {{/each}}
+  </table>
+</div>
+<div>
+  <h3>Patient {{patient.screenName}}'s details:</h3>
+  <ul>
+    <li> First Name: {{patient.firstName}} </li>
+    <li> Last Name: {{patient.lastName}} </li>
+    <li> Year Of Birth: {{patient.yearOfBirth}} </li>
+    <li> Timeseries: (Edits will take effect the next day) <br>
+      {{#each patient.timeseries}} 
+      <form action="/clinician/changeTS" method="POST">
+        <input class="input_login" type="hidden" name="patientId" value="{{../patient._id}}">
+        <input class="input_login" type="hidden" name="key" value="{{@key}}">
+        {{@key}}: 
+        {{#if this}}
+          <input class="input_login" type="radio" id="{{@key}}_yes" name="{{@key}}" value="true" required="required" checked>
+          <label for="{{@key}}_yes"> Yes </label>
+          <input class="input_login" type="radio" id="{{@key}}_no" name="{{@key}}" value="false" >
+          <label for="{{@key}}_no"> No </label>
+        {{else}}
+          <input class="input_login" type="radio" id="{{@key}}_yes" name="{{@key}}" value="true" required="required">
+          <label for="{{@key}}_yes"> Yes </label>
+          <input class="input_login" type="radio" id="{{@key}}_no" name="{{@key}}" value="false" checked>
+          <label for="{{@key}}_no"> No </label>
+        {{/if}}
+        <button class = "log_in_button log_in_button1" type="submit"> Update </button>
+      </form>
+      {{/each}}
+    </li>
+    <li> Thresholds: <br>
+      {{#each patient.threasholds}} 
+      <form action="/clinician/changeTH" method="POST"> 
+
+        <input class="input_login" type="hidden" name="patientId" value="{{../patient._id}}">
+        <input class="input_login" type="hidden" name="key" value="{{@key}}">
+        {{@key}}: (current:{{this}})
+        <input class="input_login" type="number" min="0" max="59999" name="value">
+
+        <button class = "log_in_button log_in_button1" type="submit"> Update </button>
+      </form>
+      {{/each}}
+    </li>
+    <li> Support Message: {{patient.supportMessage}} <br>
+      Change the support message:
+      <div style="width: 30%;">
+        <form id="messageForm" action="/clinician/changeSM" method="POST">
+          <input class="input_login" type="hidden" name="patientId" value="{{patient._id}}">
+          <textarea name="supportMessage" id="supportMessage" form="messageForm"></textarea>
+          <script>
+            $("#supportMessage").emojioneArea()
+          </script>
+          <button class = "log_in_button log_in_button1" type="submit"> Send </button>
+        </form>
+      </div>
+    </li>
+  </ul>
+  <a href="/clinician/viewNotes{{patient._id}}">
+  <button class = "log_in_button log_in_button1"> View and Add Notes </button>
+  </a>
+</div>
+
+<a href="/clinician/dashboard">
+  <button class = "log_in_button log_in_button1"> Back </button>
+</a>
+
+</div>
+</div>
